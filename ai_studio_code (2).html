@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advocate Pallab Kumar Gorain | Professional Portfolio</title>
+    
+    <!-- Step 1: Tailwind CSS CDN for Utility-First Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Step 2: Custom Fonts (Outfit and Roboto Mono suggested in source) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Step 3: Configure Tailwind (for dark mode support and custom styles like spin-slow) -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enables dark mode based on 'dark' class on <html>
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    },
+                    keyframes: {
+                        'spin-slow': {
+                            '0%, 100%': { transform: 'rotate(0deg)' },
+                            '50%': { transform: 'rotate(180deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                    },
+                    animation: {
+                        'spin-slow': 'spin-slow 10s linear infinite', // As suggested in source II.4
+                    },
+                    colors: {
+                        'primary-accent': 'rgb(34, 197, 94)', // A professional lime green/accent color
+                        'dark-bg': '#121212',
+                        'dark-card': '#1e1e1e',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons for professional look (Source II.2, II.4) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="bg-white dark:bg-dark-bg text-gray-900 dark:text-gray-100 transition-colors duration-300 font-sans">
+
+    <!-- Step 4: Sticky Dynamic Navigation Bar (Source II.3) -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-sm">
+        <div class="container mx-auto px-4 sm:px-8 py-4 flex justify-between items-center">
+            
+            <!-- Logo/Name -->
+            <a href="#hero" class="text-2xl font-bold font-mono text-primary-accent transition-colors duration-300 hover:text-green-600">
+                PKG
+            </a>
+
+            <!-- Desktop Menu (Hidden on Mobile) -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#hero" class="hover:text-primary-accent transition duration-200">Home</a>
+                <a href="#about" class="hover:text-primary-accent transition duration-200">About</a>
+                <a href="#services" class="hover:text-primary-accent transition duration-200">Services</a>
+                <a href="#experience" class="hover:text-primary-accent transition duration-200">Experience</a>
+                <a href="#contact" class="hover:text-primary-accent transition duration-200">Contact</a>
+                
+                <!-- Dark Mode Toggle Button (Source II.2) -->
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-dark-card transition duration-200">
+                    <i id="theme-icon" class="fas fa-sun text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <div class="flex md:hidden items-center space-x-4">
+                <button id="mobile-menu-button" class="text-2xl p-2 rounded-full hover:bg-gray-200 dark:hover:bg-dark-card transition duration-200">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button id="mobile-theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-dark-card transition duration-200">
+                    <i id="mobile-theme-icon" class="fas fa-sun text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Slide-in Menu (Fixed to the right, Source II.3) -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white dark:bg-dark-bg shadow-xl transform translate-x-full transition-transform duration-300 z-50 md:hidden p-6">
+        <button id="close-menu-button" class="absolute top-4 right-4 text-2xl hover:text-primary-accent">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="flex flex-col space-y-6 pt-12 text-lg">
+            <a href="#hero" class="mobile-link hover:text-primary-accent">Home</a>
+            <a href="#about" class="mobile-link hover:text-primary-accent">About</a>
+            <a href="#services" class="mobile-link hover:text-primary-accent">Services</a>
+            <a href="#experience" class="mobile-link hover:text-primary-accent">Experience</a>
+            <a href="#contact" class="mobile-link hover:text-primary-accent">Contact</a>
+        </div>
+    </div>
+
+    <main class="pt-20">
+        
+        <!-- Step 5: Header/Hero Section (Source III.1) -->
+        <header id="hero" class="min-h-screen flex items-center justify-center text-center p-4">
+            <div class="max-w-4xl mx-auto space-y-8">
+                <p class="text-xl text-primary-accent font-mono">Welcome - Namaste!</p>
+                <h1 class="text-6xl sm:text-7xl lg:text-8xl font-bold leading-tight">
+                    Advocate <span class="text-primary-accent">Pallab Kumar</span> Gorain
+                </h1>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Driven by passion, purpose, and professionalism in India's justice system.
+                </p>
+
+                <div class="flex justify-center items-center space-x-6 pt-4">
+                    <!-- Schedule Consultation (Smooth Scroll) -->
+                    <a href="#contact" class="px-6 py-3 bg-primary-accent text-dark-bg font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-[1.02] transition duration-300">
+                        Schedule Consultation
+                    </a>
+                    <!-- My Resume (Download Attribute - Source III.1) -->
+                    <a href="path/to/my/resume.pdf" download="Pallab_Gorain_Resume.pdf" class="px-6 py-3 border border-gray-400 dark:border-gray-600 rounded-full hover:bg-gray-100 dark:hover:bg-dark-card hover:scale-[1.02] transition duration-300">
+                        My Resume
+                    </a>
+                </div>
+
+                <!-- Animated Element Placeholder (Circular Badge, Source II.4) -->
+                <div class="relative pt-12">
+                    <!-- Image Placeholder (referencing source image 6) -->
+                    <img src="https://via.placeholder.com/300" alt="Profile Image" class="rounded-full mx-auto w-48 h-48 object-cover border-4 border-primary-accent/50 shadow-2xl">
+                    
+                    <!-- Circular Rotating Text Placeholder -->
+                    <div class="absolute bottom-10 right-1/4 translate-x-1/2 w-24 h-24 sm:w-32 sm:h-32 bg-primary-accent/10 rounded-full flex items-center justify-center border border-primary-accent">
+                        <i class="fas fa-balance-scale text-primary-accent text-3xl animate-spin-slow"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Step 6: About Me Section (Source III.2) -->
+        <section id="about" class="py-20 p-4 bg-gray-50 dark:bg-dark-card">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-4xl font-bold text-center mb-10">About Me</h2>
+                
+                <div class="flex flex-col md:flex-row gap-10 items-center">
+                    <!-- Image and Quote -->
+                    <div class="md:w-1/3 space-y-4">
+                        <img src="https://via.placeholder.com/250" alt="Lady Justice" class="rounded-lg shadow-lg w-full h-auto object-cover">
+                        <blockquote class="italic text-center text-lg text-gray-700 dark:text-gray-300 border-l-4 border-primary-accent pl-4 py-2">
+                            "Justice is not a service—it's a duty. And I'm here to serve."
+                        </blockquote>
+                    </div>
+
+                    <!-- Biography -->
+                    <div class="md:w-2/3 space-y-6 text-lg">
+                        <p>I'm Pallab Kumar Gorain, a committed and enthusiastic law student currently pursuing my B.A.LL.B. degree from Imamul Hai Khan Law College, Bokaro. Alongside my academic journey, I am gaining real-time legal experience by practising at the Purulia District Court, West Bengal.</p>
+                        <p>I've committed myself to learning and contributing to India's justice system with integrity, empathy, and deep-rooted constitutional values.</p>
+                        
+                        <!-- Skills/Tools Display (Conceptual mapping of technologies to legal areas, Source III.2) -->
+                        <div class="pt-4">
+                            <h3 class="text-2xl font-semibold mb-4">Core Focus Areas</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="badge">Constitutional Law</span>
+                                <span class="badge">Criminal Procedures</span>
+                                <span class="badge">Family Law</span>
+                                <span class="badge">Legal Drafting</span>
+                                <span class="badge">Legal Research (SCC Online, Indian Kanoon)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Step 7: Services/Areas of Legal Interest Section -->
+        <section id="services" class="py-20 p-4">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl font-bold text-center mb-12">Areas of Legal Interest</h2>
+                <p class="text-center text-lg mb-10 text-gray-600 dark:text-gray-400">Wide-ranging legal interests with special focus on practical litigation and constitutional law.</p>
+
+                <!-- Dynamic Grid for Services (auto-fit and minmax, Source II.1) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Service Card Example 1: Criminal Law -->
+                    <div class="p-6 bg-gray-100 dark:bg-dark-card rounded-xl shadow-md border border-gray-200 dark:border-dark-bg hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                        <i class="fas fa-gavel text-3xl text-primary-accent mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Criminal Law</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Understanding FIRs, bail applications, IPC offences and criminal procedures.</p>
+                    </div>
+
+                    <!-- Service Card Example 2: Family Law -->
+                    <div class="p-6 bg-gray-100 dark:bg-dark-card rounded-xl shadow-md border border-gray-200 dark:border-dark-bg hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                        <i class="fas fa-users text-3xl text-primary-accent mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Family Law</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Divorce, maintenance, domestic violence, and guardianship matters.</p>
+                    </div>
+
+                    <!-- Service Card Example 3: Constitutional Law -->
+                    <div class="p-6 bg-gray-100 dark:bg-dark-card rounded-xl shadow-md border border-gray-200 dark:border-dark-bg hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                        <i class="fas fa-scroll text-3xl text-primary-accent mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Constitutional Law</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Rights-based jurisprudence, Article 21, PILs and constitutional matters.</p>
+                    </div>
+
+                     <!-- Service Card Example 4: Property Law -->
+                    <div class="p-6 bg-gray-100 dark:bg-dark-card rounded-xl shadow-md border border-gray-200 dark:border-dark-bg hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                        <i class="fas fa-house text-3xl text-primary-accent mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Property Law</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Land disputes, registration, mutation and property documentation.</p>
+                    </div>
+
+                    <!-- Service Card Example 5: Legal Drafting -->
+                    <div class="p-6 bg-gray-100 dark:bg-dark-card rounded-xl shadow-md border border-gray-200 dark:border-dark-bg hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                        <i class="fas fa-file-alt text-3xl text-primary-accent mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Legal Drafting</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Structured pleadings, legal notices and professional documentation.</p>
+                    </div>
+
+                    <!-- Service Card Example 6: Legal Research -->
+                    <div class="p-6 bg-gray-100 dark:bg-dark-card rounded-xl shadow-md border border-gray-200 dark:border-dark-bg hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                        <i class="fas fa-book-open text-3xl text-primary-accent mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Legal Research</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Case law research using SCC Online, Indian Kanoon and legal databases.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 8: Experience Section (Timeline, Source IV) -->
+        <section id="experience" class="py-20 p-4 bg-gray-50 dark:bg-dark-card">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-4xl font-bold text-center mb-12">Academic Journey & Court Practice</h2>
+                
+                <!-- Timeline Container -->
+                <div class="relative timeline-container">
+                    
+                    <!-- Vertical Line -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-300 dark:bg-gray-700 hidden md:block"></div>
+
+                    <!-- Timeline Item 2021 -->
+                    <div class="timeline-item timeline-left">
+                        <div class="timeline-content">
+                            <span class="timeline-year">21</span>
+                            <h3 class="timeline-title">Enrolled in B.A.LL.B. Course</h3>
+                            <p>Started integrated law degree at Imamul Hai Khan Law College, Bokaro.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2022 -->
+                    <div class="timeline-item timeline-right">
+                         <div class="timeline-content">
+                            <span class="timeline-year">22</span>
+                            <h3 class="timeline-title">Beginning Court Practice</h3>
+                            <p>Started gaining practical experience at Purulia District Court, West Bengal.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2023 -->
+                    <div class="timeline-item timeline-left">
+                        <div class="timeline-content">
+                            <span class="timeline-year">23</span>
+                            <h3 class="timeline-title">Legal Research & Documentation</h3>
+                            <p>Enhanced skills in case law research using SCC Online and Indian Kanoon.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2024 (Future Step) -->
+                    <div class="timeline-item timeline-right">
+                        <div class="timeline-content">
+                            <span class="timeline-year">24</span>
+                            <h3 class="timeline-title">Advanced Legal Training</h3>
+                            <p>Focusing on constitutional law, criminal procedures, and family law.</p>
+                        </div>
+                    </div>
+
+                     <!-- Timeline Item 2025 (Future Step) -->
+                    <div class="timeline-item timeline-left">
+                        <div class="timeline-content">
+                            <span class="timeline-year">25</span>
+                            <h3 class="timeline-title">Preparing for Legal Career</h3>
+                            <p>Building foundation for future legal practice and judicial service.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- References Section (Source V) -->
+                <div class="pt-20">
+                    <h3 class="text-3xl font-bold text-center mb-8">Academic & Professional References</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <div class="p-5 border-t-4 border-primary-accent bg-white dark:bg-dark-bg shadow-md rounded-lg">
+                            <p class="italic mb-3">"Pallab's dedication... is impressive. A promising future lawyer."</p>
+                            <p class="font-semibold">Senior Advocate M. Sharma</p>
+                            <p class="text-sm text-gray-500">Mentor at Purulia Court</p>
+                        </div>
+
+                        <div class="p-5 border-t-4 border-primary-accent bg-white dark:bg-dark-bg shadow-md rounded-lg">
+                            <p class="italic mb-3">"His research skills... are exceptional for a student."</p>
+                            <p class="font-semibold">Prof. R. Das</p>
+                            <p class="text-sm text-gray-500">Faculty, Imamul Hai Khan Law College</p>
+                        </div>
+                        
+                        <div class="p-5 border-t-4 border-primary-accent bg-white dark:bg-dark-bg shadow-md rounded-lg">
+                            <p class="italic mb-3">"Pallab combines academic knowledge with practical insight..."</p>
+                            <p class="font-semibold">A. Sengupta</p>
+                            <p class="text-sm text-gray-500">Court Clerk, Purulia District Court</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 9: Contact Section (Form and Details, Source III.4) -->
+        <section id="contact" class="py-20 p-4">
+            <div class="container mx-auto max-w-3xl">
+                <h2 class="text-4xl font-bold text-center mb-4">Contact & Appointment</h2>
+                <p class="text-center text-lg mb-10 text-gray-600 dark:text-gray-400">Ready to discuss your legal matter? Get in touch for a consultation.</p>
+
+                <div class="bg-gray-100 dark:bg-dark-card p-8 rounded-xl shadow-lg">
+                    
+                    <!-- Form Layout (Using Web3 Forms/Formspree concept - Source III.4) -->
+                    <form action="YOUR_WEB3FORMS_ENDPOINT" method="POST" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-1">Full Name *</label>
+                                <input type="text" id="name" name="Full Name" required class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-accent focus:border-primary-accent dark:bg-dark-bg">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-1">Email Address *</label>
+                                <input type="email" id="email" name="Email" required class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-accent focus:border-primary-accent dark:bg-dark-bg">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="phone" class="block text-sm font-medium mb-1">Phone Number *</label>
+                            <input type="tel" id="phone" name="Phone Number" required class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-accent focus:border-primary-accent dark:bg-dark-bg" value="+91-8145760110" readonly>
+                        </div>
+
+                        <div>
+                            <label for="description" class="block text-sm font-medium mb-1">Brief Description *</label>
+                            <textarea id="description" name="Brief Description" rows="4" required class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-accent focus:border-primary-accent dark:bg-dark-bg"></textarea>
+                        </div>
+
+                        <!-- Access Key (Hidden Input, required for services like Web3 Forms) -->
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY"> 
+
+                        <button type="submit" class="w-full px-6 py-3 bg-primary-accent text-dark-bg font-semibold rounded-lg shadow-md hover:bg-green-600 active:translate-y-0.5 transition duration-200">
+                            Send Appointment Request
+                        </button>
+                    </form>
+                    
+                    <!-- Contact Info -->
+                    <div class="pt-8 mt-8 border-t border-gray-300 dark:border-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Working Office</h4>
+                            <p>Purulia Court</p>
+                            <p class="text-sm text-gray-500">Purulia, West Bengal</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Email</h4>
+                            <a href="mailto:pallabgorain50@gmail.com" class="text-primary-accent hover:underline">pallabgorain50@gmail.com</a>
+                            <h4 class="font-semibold text-lg mt-4 mb-2">WhatsApp Link</h4>
+                             <a href="https://wa.me/qr/SOTWGEYA74EMM1" target="_blank" class="text-primary-accent hover:underline flex items-center">
+                                Chat Now <i class="fab fa-whatsapp ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Step 10: Footer (Source III.5) -->
+    <footer class="bg-gray-900 dark:bg-black text-gray-400 py-10 p-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-gray-700 pb-8 mb-8">
+                
+                <!-- Logo/Branding -->
+                <div class="col-span-2 md:col-span-1">
+                    <a href="#hero" class="text-2xl font-bold font-mono text-primary-accent mb-2 block">PKG</a>
+                    <p class="text-sm">Committed law student and legal intern, building a foundation for future legal practice with integrity and dedication.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h5 class="font-semibold text-white mb-3">Quick Links</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="hover:text-primary-accent transition">About</a></li>
+                        <li><a href="#services" class="hover:text-primary-accent transition">Services</a></li>
+                        <li><a href="#experience" class="hover:text-primary-accent transition">Experience</a></li>
+                        <li><a href="#contact" class="hover:text-primary-accent transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h5 class="font-semibold text-white mb-3">Contact Info</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Purulia Court, West Bengal</li>
+                        <li><i class="fas fa-phone mr-2"></i> +91-8145760110</li>
+                        <li><i class="fas fa-envelope mr-2"></i> pallabgorain50@gmail.com</li>
+                    </ul>
+                </div>
+
+                <!-- Social Media (Placeholder) -->
+                <div>
+                    <h5 class="font-semibold text-white mb-3">Connect</h5>
+                    <div class="flex space-x-4 text-xl">
+                        <a href="#" class="hover:text-primary-accent transition"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="hover:text-primary-accent transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-primary-accent transition"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center text-sm">
+                &copy; 2025 Pallab Kumar Gorain. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Timeline CSS Customization (For responsive layout) -->
+    <style>
+        /* Custom styles to handle the responsive timeline layout */
+        .timeline-item {
+            position: relative;
+            padding: 1rem 0;
+            width: 100%;
+        }
+        .timeline-content {
+            padding: 1rem 2rem;
+            background-color: theme('colors.gray.100');
+            border-radius: theme('borderRadius.lg');
+            box-shadow: theme('boxShadow.md');
+        }
+        .dark .timeline-content {
+            background-color: theme('colors.dark-bg');
+            border: 1px solid theme('colors.gray.800');
+        }
+        .timeline-year {
+            font-family: theme('fontFamily.mono');
+            font-size: theme('fontSize.xl');
+            font-weight: theme('fontWeight.bold');
+            color: theme('colors.primary-accent');
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Desktop Layout (MD breakpoint) */
+        @media (min-width: 768px) {
+            .timeline-item {
+                width: 50%;
+            }
+            .timeline-item::after {
+                content: '';
+                position: absolute;
+                width: 1rem;
+                height: 1rem;
+                background-color: theme('colors.primary-accent');
+                border-radius: 50%;
+                top: 2rem;
+                z-index: 10;
+            }
+            .timeline-left {
+                left: 0;
+                padding-right: 3rem;
+            }
+            .timeline-right {
+                left: 50%;
+                padding-left: 3rem;
+            }
+            .timeline-left::after {
+                right: -0.5rem;
+            }
+            .timeline-right::after {
+                left: -0.5rem;
+            }
+            .timeline-right .timeline-content {
+                text-align: left;
+            }
+            .timeline-left .timeline-content {
+                text-align: right;
+            }
+        }
+
+        /* Skills Badge styling (Source III.2) */
+        .badge {
+            @apply px-4 py-1 text-sm rounded-full bg-primary-accent/10 border border-primary-accent text-primary-accent transition duration-200 hover:bg-primary-accent hover:text-dark-bg;
+        }
+
+        /* Dynamic Navbar styling (Source II.3) */
+        .navbar-scrolled {
+            @apply bg-white/90 shadow-lg dark:bg-black/90;
+        }
+    </style>
+
+
+    <!-- Step 11: Interactivity (JavaScript) -->
+    <script>
+        const html = document.documentElement;
+        const toggleButton = document.getElementById('theme-toggle');
+        const mobileToggleButton = document.getElementById('mobile-theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+        const navbar = document.getElementById('navbar');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        // --- Dark Mode Initialization and Toggling (Source II.2) ---
+        
+        // Check local storage for theme preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            updateIcon('moon');
+        } else {
+            html.classList.remove('dark');
+            updateIcon('sun');
+        }
+
+        function updateIcon(mode) {
+            if (mode === 'dark') {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                mobileThemeIcon.classList.remove('fa-sun');
+                mobileThemeIcon.classList.add('fa-moon');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                mobileThemeIcon.classList.remove('fa-moon');
+                mobileThemeIcon.classList.add('fa-sun');
+            }
+        }
+
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+                updateIcon('sun');
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+                updateIcon('moon');
+            }
+        }
+
+        toggleButton.addEventListener('click', toggleTheme);
+        mobileToggleButton.addEventListener('click', toggleTheme);
+
+
+        // --- Dynamic Navbar on Scroll (Source II.3) ---
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+
+        // --- Mobile Menu Management (Source II.3) ---
+
+        // Open menu
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+            html.style.overflowY = 'hidden'; // Prevent scrolling when menu is open
+        });
+
+        // Close menu
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+            html.style.overflowY = 'scroll';
+        });
+
+        // Close menu and scroll smoothly on link click (Critically, auto-close the menu)
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Allows smooth scroll functionality inherent in the HTML class scroll-smooth
+                mobileMenu.classList.add('translate-x-full');
+                html.style.overflowY = 'scroll';
+            });
+        });
+
+    </script>
+</body>
+</html>
